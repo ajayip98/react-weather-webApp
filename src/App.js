@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 const api = {
   key: "bc61560e6647630623ea02b487958737",
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
 function App() {
+const [query, setQuery] = useState('');
+const [weather, setweather] = useState({});
+
+const search = evt => {
+  if (evt.key === "Enter") {
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    .then(res => res.json())  
+    .then(result => setweather(result));
+  }
+}
+
+
+
+
   const dateBuilder = (d) => {
     let months = [
       "January",
