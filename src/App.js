@@ -11,6 +11,10 @@ function App() {
         <div className="search-box">
           <input type="text" className="search-bar" placeholder="Search..." />
         </div>
+        <div className="location-box">
+          <div className="location">New York,US</div>
+          <div className="date">{dateBuilder(new Date())}</div>
+        </div>
       </main>
     </div>
   );
