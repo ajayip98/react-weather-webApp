@@ -5,19 +5,20 @@ const api = {
 };
 
 function App() {
-const [query, setQuery] = useState('');
-const [weather, setweather] = useState({});
+  const [query, setQuery] = useState("");
+  const [weather, setweather] = useState({});
 
-const search = evt => {
-  if (evt.key === "Enter") {
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-    .then(res => res.json())  
-    .then(result => setweather(result));
-  }
-}
-
-
-
+  const search = (evt) => {
+    if (evt.key === "Enter") {
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        .then((res) => res.json())
+        .then((result) => {
+          setweather(result);
+          setQuery("");
+          console.log(result);
+        });
+    }
+  };
 
   const dateBuilder = (d) => {
     let months = [
@@ -55,16 +56,31 @@ const search = evt => {
     <div className="app">
       <main>
         <div className="search-box">
-          <input type="text" className="search-bar" placeholder="Search..." />
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search..."
+            onChange={(e) => setQuery(e.target.value)}
+            value={query}
+            onKeyPress={search}
+          />
         </div>
-        <div className="location-box">
-          <div className="location">New York,US</div>
-          <div className="date">{dateBuilder(new Date())}</div>
-        </div>
-        <div className="weather-box">
-          <div className="temp">15 c</div>
-          <div className="weather">Sunny</div>
-        </div>
+        {typeof weather.main != "undefined" ? (
+          <div>
+            <div className="location-box">
+              <div className="location">
+                {weather.name}, {weather.sys.country}
+              </div>
+              <div className="date">{dateBuilder(new Date())}</div>
+            </div>
+            <div className="weather-box">
+              <div className="temp">15 c</div>
+              <div className="weather">Sunny</div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </main>
     </div>
   );
