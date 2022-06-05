@@ -63,6 +63,13 @@ function App() {
       }
     >
       <main>
+        <div class="navbar">
+          <a href="#">Ahal</a>
+          <a href="#">Mary</a>
+          <a href="#">Lebap</a>
+          <a href="#">Dashoguz</a>
+          <a href="#">Balkan</a>
+        </div>
         <div className="search-box">
           <input
             type="text"

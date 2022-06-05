@@ -8,6 +8,41 @@ body {
   font-family: "montseratt", sans-serif;
 }
 
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: rgb(11, 12, 12);
+  overflow: auto;
+ 
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  padding: 12px ;
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+  font-size: 36px;
+  width: 20%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+  background-color: rgb(116, 98, 219);
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+  }
+}
+
 .app {
   background-image: url("./assets/cold-bg.jpg");
   background-size: cover;
@@ -31,7 +66,7 @@ main {
 
 .search-box {
   width: 100%;
-  margin: 0 0 75px;
+  margin: 25px 0 75px;
 }
 
 .search-box .search-bar {
